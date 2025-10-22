@@ -40,7 +40,7 @@ from django.db import models
 
 
 
-class User(models.Model):
+class Author(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
@@ -56,7 +56,7 @@ class User(models.Model):
 
     
 class Article(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='articles')
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='articles')
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, blank=True, related_name='articles')
     title = models.CharField(max_length=100)
     content = models.TextField()
